@@ -1,0 +1,14 @@
+- Đăng ký
+- Đăng nhập
+- Quản lý sản phẩm
+    - Hiển thị
+    - Thêm mới sản phẩm
+    - Sửa sản phẩm
+    - Xoá sản phẩm
+
+- localstorage
+- boostrap (new) - https://getbootstrap.com/
+    - Lên trang copy cdn về
+    - Nhúng cdn bằng plugin boostrap 4
+- cdn - nhúng thư viện online
+- nav bar - Thanh điều hướng

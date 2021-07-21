@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Title</title>
+    <script src="../../core/data.js"></script>
+</head>
+<style>
+    form {
+        width: 300px;
+        margin: auto;
+    }
+</style>
+
+<body>
+    <div class="container mt-5">
+        <form>
+            <fieldset class="border border-primary rounded-10 p-3">
+                <h2>Đăng ký</h2>
+                <input type="text" id="username" placeholder="Tên đăng nhập" class="form-control mb-3" required>
+                <input type="email" id="email" placeholder="Email" class="form-control mb-3" required>
+                <input type="password" id="password" placeholder="Mật khẩu" class="form-control mb-3" required>
+                <input type="password" id="confirmPassword" placeholder="Xác nhận mật khẩu" class="form-control mb-3" required>
+                <button class="btn  btn-primary" type="button" onclick="register()">Đăng ký</button>
+                <a class="btn btn-outline-success" href="login.html">Đăng nhập</a>
+                <button class="btn btn-secondary" type="button">Huỷ</button>
+            </fieldset>
+        </form>
+    </div>
+    <script src="../../core/user.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

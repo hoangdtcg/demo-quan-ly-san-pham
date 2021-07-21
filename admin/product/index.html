@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Quản lý sản phẩm</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="../../core/data.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <button type="button" class="btn btn-success mt-3 mb-3" onclick="showForm('create-product')">Thêm sản phẩm</button>
+        <!-- Form thêm mới -->
+        <form id="create-product" class="border p-3 mb-3" style="display: none;">
+            <label for="name-product"><h3>Thêm sản phẩm</h3></label>
+            <div class="mb-3">
+                <label for="name-product" class="form-label">Tên sản phẩm</label>
+                <input type="text" class="form-control" id="name-product" placeholder="Iphone VN">
+            </div>
+            <div class="mb-3">
+                <label for="price-product" class="form-label">Giá thành</label>
+                <input type="number" class="form-control" id="price-product" placeholder="100000">
+            </div>
+            <div class="mb-3">
+                <label for="madein-product" class="form-label">Xuất xứ</label>
+                <input type="text" class="form-control" id="madein-product" placeholder="Việt Nam">
+            </div>
+            <div class="mb-3">
+                <label for="madein-product" class="form-label">Ảnh sản phẩm</label>
+                <input type="text" class="form-control" id="image-product" placeholder="Link ảnh sản phẩm">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="createProduct()">Thêm mới</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="hideForm('create-product')">Hủy</button>
+        </form>
+
+        <!-- Form sửa sản phẩm -->
+        <form id="update-product" class="border p-3 mb-3" style="display: none;">
+            <label for="name-product"><h3>Cập nhật sản phẩm</h3></label>
+            <div class="mb-3">
+                <label for="name-product" class="form-label">Tên sản phẩm</label>
+                <input type="text" class="form-control" id="name-update" placeholder="Iphone VN">
+            </div>
+            <div class="mb-3">
+                <label for="price-product" class="form-label">Giá thành</label>
+                <input type="number" class="form-control" id="price-update" placeholder="100000">
+            </div>
+            <div class="mb-3">
+                <label for="madein-product" class="form-label">Xuất xứ</label>
+                <input type="text" class="form-control" id="madein-update" placeholder="Việt Nam">
+            </div>
+            <div class="mb-3">
+                <label for="madein-product" class="form-label">Ảnh sản phẩm</label>
+                <input type="text" class="form-control" id="image-update" placeholder="Link ảnh sản phẩm">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="updateProduct()">Cập nhật</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="hideForm('update-product')">Hủy</button>
+        </form>
+
+        <!-- Modal hiển thị sản phẩm -->
+        <div class="modal" tabindex="99" style="display: none;" id="show-detail">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Chi tiết sản phẩm</h5>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button> -->
+                    </div>
+                    <div class="modal-body">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="..." id="card-image">
+                            <div class="card-body">
+                                <h5 class="card-title" id="card-name">Card title</h5>
+                                <p class="card-text" id="card-price">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <p class="card-text" id="card-madein">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Mua ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="hideForm('show-detail')">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Ảnh sản phẩm</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Giá thành</th>
+                    <th scope="col">Xuất xứ</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+            </tbody>
+        </table>
+    </div>
+    <script src="product.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
